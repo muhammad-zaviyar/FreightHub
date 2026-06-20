@@ -16,6 +16,7 @@ use App\Http\Controllers\TablesController;
 use App\Http\Controllers\UielementsController;
 use App\Http\Controllers\UtilitiesController;
 use App\Http\Controllers\WidgetsController;
+use App\Http\Controllers\AirwaybillController;
 
 
 // use App\Http\Controllers\Controller;
@@ -260,3 +261,7 @@ Route::get('vector-maps', [MapsController::class, 'vector_maps']);
 
 // ICONS //
 Route::get('icons', [IconsController::class, 'icons']);
+
+
+// AIR WAY BILL //
+Route::get('airwaybill/create', [AirwaybillController::class, 'create']);
