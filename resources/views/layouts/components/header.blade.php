@@ -520,17 +520,21 @@
                                 <li class="p-3 bg-light bg-opacity-75 border-bottom">
                                     <div class="d-flex align-items-center justify-content-between gap-4">
                                         <div>
-                                            <p class="mb-0 fw-semibold lh-1">Ashwin Seth</p>
-                                            <span class="fs-11 text-muted">ashwinseth@mail.com</span>
+                                            <p class="mb-0 fw-semibold lh-1">{{ auth()->user()->name ?? 'User' }}</p>
+                                            <span class="fs-11 text-muted">{{ auth()->user()->email ?? '' }}</span>
                                         </div>
-                                        <span class="badge bg-pink align-self-end mb-1">Pro</span>
+                                        <span class="badge bg-primary align-self-end mb-1 text-capitalize">{{ auth()->user()->getRoleNames()->first() ?? '' }}</span>
                                     </div>
                                 </li>
-                                <li><a class="dropdown-item d-flex align-items-center" href="{{url('profile')}}"><i class="ti ti-user-circle fs-18 me-2 text-gray fw-normal"></i>My Profile</a></li>
-                                <li><a class="dropdown-item d-flex align-items-center" href="{{url('mail')}}"><i class="ti ti-inbox fs-18 me-2 text-gray fw-normal"></i>Mail Inbox <span class="badge bg-success ms-auto">06</span></a></li>
-                                <li><a class="dropdown-item d-flex align-items-center" href="{{url('mail-settings')}}"><i class="ti ti-adjustments-horizontal fs-18 me-2 text-gray fw-normal"></i>Account Settings</a></li>
                                 <li> <hr class="dropdown-divider"> </li>
-                                <li><a class="dropdown-item d-flex align-items-center" href="{{url('signin-cover')}}"><i class="ti ti-logout fs-18 me-2 text-gray fw-normal"></i>Sign Out</a></li>
+                                <li>
+                                    <form method="POST" action="{{ route('logout') }}">
+                                        @csrf
+                                        <button type="submit" class="dropdown-item d-flex align-items-center">
+                                            <i class="ti ti-logout fs-18 me-2 text-gray fw-normal"></i>Sign Out
+                                        </button>
+                                    </form>
+                                </li>
                             </ul>
                         </div>  
                         <!-- End::header-element -->
